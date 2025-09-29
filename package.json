@@ -1,0 +1,17 @@
+{
+  "name": "parametric-rod-frame-corner-connector",
+  "version": "0.0.0",
+  "description": "Frame corner connector for assembing shelf with rods of specified diameter",
+  "author": "goldfishlaser",
+  "license": "CC0-1.0",
+  "packageManager": "npm",
+  "workspaces": [
+    "./packages/*",
+    "./packages/@*/*"
+  ],
+  "m30pm": {
+    "versionControlTool": "git",
+    "buildTool": "gradle",
+    "loggingLevel": "error"
+  }
+}
