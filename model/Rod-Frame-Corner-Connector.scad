@@ -30,33 +30,34 @@ module surface(){
     }
     }
     
-    translate([0,0,4.2])rotate([0,-45,0])rotate([-45,0,0]){
-        tube_surface();
-        rotate([90,0,0])tube_surface();
+    translate([0,0,4.2]){
+        translate([0,0,-diameter/2])scale([1,1,1.1])tube_surface();
+        translate([0,diameter/2+thickness,0])scale([1,1.1,1])rotate([90,0,0])tube_surface();
         rotate([0,90,0])tube_surface();
     }
 };
 
 module cut(){
     module tube_inner(){
-    translate([0,0,height]){
+    translate([0,0,height+z]){
         rotate([180,0,0]){
-            cylinder(h=height+z, r=diameter/2);
+            cylinder(h=height-diameter, r=diameter/2);
             }        
         }
     }
-    translate([0,0,4.2])rotate([0,-45,0])rotate([-45,0,0]){
-        tube_inner();
-        rotate([90,0,0])tube_inner();
+    translate([0,0,4.2]){
+        translate([0,0,-diameter/2])scale([1,1,1.1])tube_inner();
+        translate([0,diameter-4,0])scale([1,1.5,1])rotate([90,0,0])tube_inner();
+        scale([1,1,1])translate([0,40,0])rotate([90,0,0])tube_inner();
         rotate([0,90,0])tube_inner();
         }
     
-    z2=30;
-    translate([0,0,-z2/2])cube([z2,z2,z2], center=true);
+  //  z2=30;
+  //  translate([0,0,-z2/2])cube([z2,z2,z2], center=true);
     
 };
 
 difference(){
-    surface();    
-    cut();
+    color("blue",.75)surface();    
+    color("red")cut();
 }
