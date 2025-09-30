@@ -31,7 +31,7 @@ module surface(){
     }
     
     translate([0,0,4.2]){
-        translate([0,0,-diameter/2])scale([1,1,1.1])tube_surface();
+        translate([0,0,-diameter/2-thickness])scale([1,1,1.1])tube_surface();
         translate([0,diameter/2+thickness,0])scale([1,1.1,1])rotate([90,0,0])tube_surface();
         rotate([0,90,0])tube_surface();
     }
